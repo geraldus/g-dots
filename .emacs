@@ -185,6 +185,8 @@ static char *gnus-pointer[] = {
  '(tabbar-background-color "#ffffff")
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
+ '(undo-limit 10485760)
+ '(undo-strong-limit 10485760)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
