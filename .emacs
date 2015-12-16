@@ -240,6 +240,8 @@ static char *gnus-pointer[] = {
 (global-set-key (kbd "C-M-:") #'eval-buffer)
 (global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
 
+(electric-indent-mode 1)
+(electric-pair-mode 1)
 
 ;; ===========================
 ;; Некоторые сочетания клавиш:
@@ -630,11 +632,6 @@ Argument IGNORE is not used."
 
 ;; (set-fontset-font "fontset-default" '(#x0000 . #x04ff) "American Typewriter") ;; ВКЛ
 ;; (set-fontset-font "fontset-default" '(#x0001 . #x04ff) nil) ;; - ОТКЛ
-
-
-;; electric-indent-mode!
-;; electric-pair-mode!
-
 
 (provide '.emacs)
 ;;; .emacs ends here
