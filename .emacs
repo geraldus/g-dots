@@ -212,6 +212,7 @@ static char *gnus-pointer[] = {
      (340 . "#268fc6")
      (360 . "#268bd2"))))
  '(vc-annotate-very-old-color "#93115C")
+ '(web-mode-markup-indent-offset 2)
  '(weechat-color-list
    (quote
     (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
@@ -528,6 +529,7 @@ Argument IGNORE is not used."
 (add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
 
+(add-hook 'web-mode-hook (lambda () (fci-mode -1)))
 
 ;; ====
 ;; WEB:
