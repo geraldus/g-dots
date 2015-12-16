@@ -39,7 +39,6 @@
  '(custom-theme-directory "~/.emacs.d/themes/")
  '(debug-on-error nil)
  '(diary-entry-marker (quote font-lock-variable-name-face))
- '(electric-indent-mode nil)
  '(emms-mode-line-icon-image-cache
    (quote
     (image :type xpm :ascent center :data "/* XPM */
