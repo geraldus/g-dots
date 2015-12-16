@@ -177,6 +177,8 @@ static char *gnus-pointer[] = {
  '(savehist-file "~/.emacs.d/tmp/savehist")
  '(shm-indent-spaces 4)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(smarty-left-delimiter "<{")
+ '(smarty-right-delimiter "}>")
  '(smex-history-length 33)
  '(sml/active-background-color "#34495e")
  '(sml/active-foreground-color "#ecf0f1")
@@ -525,6 +527,13 @@ Argument IGNORE is not used."
 (add-hook 'company-completion-started-hook 'company-turn-off-fci)
 (add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+
+
+;; ====
+;; WEB:
+;; ====
+(require 'smarty-mode)
+
 
 ;;; =======================================
 ;;; Indent-Guide.el --- подсветка отступов.
