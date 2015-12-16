@@ -150,6 +150,7 @@ static char *gnus-pointer[] = {
  '(indent-guide-recursive t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
  '(linum-format (quote dynamic))
  '(magit-diff-use-overlays nil)
  '(magit-last-seen-setup-instructions "1.4.0" t)
