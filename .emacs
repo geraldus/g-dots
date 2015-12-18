@@ -20,7 +20,7 @@
  '(ansi-color-names-vector
    ["#383830" "#f92672" "#a6e22e" "#f4bf75" "#66d9ef" "#ae81ff" "#66d9ef" "#f5f4f1"])
  '(ansi-term-color-vector
-   [unspecified "#FAFAFA" "#FF1744" "#66BB6A" "#FFA000" "#42A5F5" "#7E57C2" "#0097A7" "#546E7A"] t)
+   [unspecified "#FAFAFA" "#FF1744" "#66BB6A" "#FFA000" "#42A5F5" "#7E57C2" "#0097A7" "#546E7A"])
  '(beacon-color "#ec4780")
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
@@ -39,7 +39,6 @@
  '(custom-theme-directory "~/.emacs.d/themes/")
  '(debug-on-error nil)
  '(diary-entry-marker (quote font-lock-variable-name-face))
- '(electric-indent-mode nil)
  '(emms-mode-line-icon-image-cache
    (quote
     (image :type xpm :ascent center :data "/* XPM */
@@ -98,11 +97,10 @@ static char *gnus-pointer[] = {
 \"###########.######\" };")) t)
  '(grep-find-ignored-directories
    (quote
-    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "tmp" ".cabal-sandbox" "dist" ".stack-work")))
+    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "tmp" ".cabal-sandbox" "dist"  ".stack-work")))
  '(grep-find-ignored-files
    (quote
     (".#*" "*.hi" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "#*#")))
- '(grep-highlight-matches t)
  '(haskell-hoogle-command "hoogle")
  '(haskell-indent-spaces 2)
  '(haskell-indentation-show-indentations nil)
@@ -113,10 +111,10 @@ static char *gnus-pointer[] = {
  '(haskell-process-args-stack-ghci (quote ("--ghc-options=-ferror-spans")))
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
- '(haskell-process-path-ghci "ghci-ng")
+ '(haskell-process-path-ghci "ghci")
  '(haskell-process-reload-with-fbytecode t)
  '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type (quote auto))
+ '(haskell-process-type (quote stack-ghci))
  '(haskell-process-use-presentation-mode t)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
@@ -152,6 +150,7 @@ static char *gnus-pointer[] = {
  '(indent-guide-recursive t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
  '(linum-format (quote dynamic))
  '(magit-diff-use-overlays nil)
  '(magit-last-seen-setup-instructions "1.4.0" t)
@@ -178,15 +177,19 @@ static char *gnus-pointer[] = {
  '(savehist-file "~/.emacs.d/tmp/savehist")
  '(shm-indent-spaces 4)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(smarty-left-delimiter "<{")
+ '(smarty-right-delimiter "}>")
  '(smex-history-length 33)
  '(sml/active-background-color "#34495e")
  '(sml/active-foreground-color "#ecf0f1")
  '(sml/inactive-background-color "#dfe4ea")
  '(sml/inactive-foreground-color "#34495e")
- '(tab-stop-list (number-sequence 4 80 4))
+ '(tab-stop-list (number-sequence 2 80 2))
  '(tabbar-background-color "#ffffff")
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
+ '(undo-limit 10485760)
+ '(undo-strong-limit 10485760)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -209,6 +212,7 @@ static char *gnus-pointer[] = {
      (340 . "#268fc6")
      (360 . "#268bd2"))))
  '(vc-annotate-very-old-color "#93115C")
+ '(web-mode-markup-indent-offset 2)
  '(weechat-color-list
    (quote
     (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
@@ -241,6 +245,8 @@ static char *gnus-pointer[] = {
 (global-set-key (kbd "C-M-:") #'eval-buffer)
 (global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
 
+(electric-indent-mode 1)
+(electric-pair-mode 1)
 
 ;; ===========================
 ;; Некоторые сочетания клавиш:
@@ -477,9 +483,18 @@ static char *gnus-pointer[] = {
 (add-hook 'package-menu-mode-hook #'hl-line-mode)
 
 (require 'whitespace)
-(setq whitespace-style '(face tab tab-mark indentation::space trailing))
+(setq whitespace-style
+      '(face tabs spaces tab-mark indentation::space trailing))
 (setq whitespace-display-mappings
-      '((newline-mark 10 [182 10]))) ;; ¶ — для символа новых строк
+      '((newline-mark 10  [182 10])
+        (tab-mark     9   [8677 9])
+        (space-mark   32  [183])
+        (space-mark   160 [9251])))
+;; ¶ + перенос строки — для символа новых строк
+;; ⇥ + табуляция      — для символа табуляции
+;; ·                  — для пробела
+;; ␣                  — для неразрывного пробела
+;; если что-то не понятно - прочти описания переменных, сразу всё вспомнишь
 
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
@@ -513,6 +528,14 @@ Argument IGNORE is not used."
 (add-hook 'company-completion-started-hook 'company-turn-off-fci)
 (add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+
+(add-hook 'web-mode-hook (lambda () (fci-mode -1)))
+
+;; ====
+;; WEB:
+;; ====
+(require 'smarty-mode)
+
 
 ;;; =======================================
 ;;; Indent-Guide.el --- подсветка отступов.
@@ -602,11 +625,12 @@ Argument IGNORE is not used."
 ;; (set-frame-font "Fira Mono-12" t)
 ;; (set-frame-font "Input-14" t)
 ;; (set-frame-font "Inconsolata LGC-12" t)
- (set-frame-font "Liberation Mono-12" t)
+;; (set-frame-font "Liberation Mono-13" t)
 ;; (set-frame-font "M+ 1m-13:weight=light" t)
 ;; (set-frame-font "Menlo-13:weight=light" t)
 ;; (set-frame-font "NK57 Monospace-14:weight=light" t)
 ;; (set-frame-font "PT Mono-13" t)
+(set-frame-font "Liberation Mono-12" t)
 ;; (set-frame-font "Roboto Mono-12" t)
 ;; (set-frame-font "Ubuntu Mono-14" t)
 ;; Переназначение шрифта для кириллицы
@@ -621,7 +645,6 @@ Argument IGNORE is not used."
 
 ;; (set-fontset-font "fontset-default" '(#x0000 . #x04ff) "American Typewriter") ;; ВКЛ
 ;; (set-fontset-font "fontset-default" '(#x0001 . #x04ff) nil) ;; - ОТКЛ
-
 
 (provide '.emacs)
 ;;; .emacs ends here

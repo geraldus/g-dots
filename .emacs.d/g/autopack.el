@@ -22,9 +22,10 @@
     magit
     markdown-mode
     multiple-cursors
-    shakespeare-mode
     smex
+    shakespeare-mode
     undo-tree
+    web-mode
     yaml-mode)
   "List of packages to be installed from archives.")
 
