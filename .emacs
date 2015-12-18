@@ -530,17 +530,31 @@ Argument IGNORE is not used."
 (add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
 
-(add-hook 'web-mode-hook (lambda () (fci-mode -1)))
 
 ;; ====
 ;; WEB:
 ;; ====
+
+(require 'web-mode)
+;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+;; Using web-mode for editing plain HTML files can be done this way
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(add-hook 'web-mode-hook (lambda () (fci-mode -1)))
+
 (require 'smarty-mode)
 
 
-;;; =======================================
-;;; Indent-Guide.el --- подсветка отступов.
-;;; =======================================
+;; =======================================
+;; Indent-Guide.el --- подсветка отступов.
+;; =======================================
 (require 'indent-guide)
 
 
