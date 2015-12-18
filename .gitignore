@@ -1,0 +1,6 @@
+\#*\#
+_darcs
+# .gitignore
+.git
+.dir-locals.el
+.ghci
