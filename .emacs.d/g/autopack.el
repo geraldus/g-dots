@@ -7,7 +7,8 @@
 (require 'cl-lib)
 
 (defvar g/packages
-  '(company
+  '(ace-jump-mode
+    company
     color-theme-sanityinc-tomorrow
     diff-hl
     dockerfile-mode
