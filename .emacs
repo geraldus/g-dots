@@ -28,6 +28,7 @@
  '(company-show-numbers t)
  '(company-tooltip-align-annotations t)
  '(compilation-message-face (quote default))
+ '(css-indent-offset 2)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
@@ -213,6 +214,7 @@ static char *gnus-pointer[] = {
      (340 . "#268fc6")
      (360 . "#268bd2"))))
  '(vc-annotate-very-old-color "#93115C")
+ '(web-mode-css-indent-offset 2)
  '(web-mode-markup-indent-offset 2)
  '(weechat-color-list
    (quote
