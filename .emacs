@@ -22,6 +22,7 @@
  '(ansi-term-color-vector
    [unspecified "#FAFAFA" "#FF1744" "#66BB6A" "#FFA000" "#42A5F5" "#7E57C2" "#0097A7" "#546E7A"] t)
  '(beacon-color "#ec4780")
+ '(c-basic-offset 2)
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
  '(company-selection-wrap-around t)
@@ -187,6 +188,7 @@ static char *gnus-pointer[] = {
  '(sml/inactive-background-color "#dfe4ea")
  '(sml/inactive-foreground-color "#34495e")
  '(tab-stop-list (number-sequence 2 80 2))
+ '(tab-width 2)
  '(tabbar-background-color "#ffffff")
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
