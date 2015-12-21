@@ -572,6 +572,7 @@ Argument IGNORE is not used."
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (add-hook 'web-mode-hook (lambda () (fci-mode -1)))
+(add-hook 'css-mode-hook (lambda () (linum-mode 1)))
 
 (require 'smarty-mode)
 
