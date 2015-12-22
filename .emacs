@@ -579,6 +579,10 @@ Argument IGNORE is not used."
 (add-hook 'web-mode-hook (lambda () (fci-mode -1)))
 (add-hook 'css-mode-hook (lambda () (linum-mode 1)))
 
+(c-add-style "php-customized"
+             '("php" (c-basic-offset . 2)))
+(add-hook 'php-mode-hook (lambda () (c-set-style "php-customized")))
+
 (require 'smarty-mode)
 
 
