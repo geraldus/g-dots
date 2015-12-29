@@ -236,7 +236,7 @@ static char *gnus-pointer[] = {
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bold ((t (:weight normal))))
- '(whitespace-newline ((t (:inherit default :background "#ffffff" :foreground "lavender" :slant italic :weight light)))))
+ '(whitespace-newline ((t (:inherit whitespace-space)))))
 
 
 ;; простые вещи в первую очередь!
@@ -526,16 +526,18 @@ static char *gnus-pointer[] = {
 
 (require 'whitespace)
 (setq whitespace-style
-      '(face tabs tab-mark indentation::space trailing))
+      '(face tabs tab-mark newline newline-mark indentation::space trailing))
 (setq whitespace-display-mappings
-      '((newline-mark 10  [182 10])
+      '((newline-mark 10  [172 9] [182 10])
         (tab-mark     9   [8677 9])
         (space-mark   32  [183])
-        (space-mark   160 [9251])))
-;; ¶ + перенос строки — для символа новых строк
-;; ⇥ + табуляция      — для символа табуляции
-;; ·                  — для пробела
-;; ␣                  — для неразрывного пробела
+        (space-mark   160 [9251])
+        (newline-mark 13  [8617])))
+;; ¬ | ¶ + перенос строки — для символа новых строк
+;; ↩                      — для символа новых строк
+;; ⇥ + табуляция          — для символа табуляции
+;; ·                      — для пробела
+;; ␣                      — для неразрывного пробела
 ;; если что-то не понятно - прочти описания переменных, сразу всё вспомнишь
 
 (add-hook 'prog-mode-hook #'whitespace-mode)
