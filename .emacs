@@ -581,6 +581,7 @@ Argument IGNORE is not used."
             (linum-mode 1)
             (diff-hl-mode 1)))
 
+(require 'php-mode)
 (c-add-style "php-customized"
              '("php" (c-basic-offset . 2)))
 (add-hook 'php-mode-hook (lambda () (c-set-style "php-customized")))

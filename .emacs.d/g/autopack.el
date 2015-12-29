@@ -23,6 +23,7 @@
     magit
     markdown-mode
     multiple-cursors
+    php-mode
     smex
     shakespeare-mode
     undo-tree
