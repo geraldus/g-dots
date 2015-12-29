@@ -528,11 +528,11 @@ static char *gnus-pointer[] = {
 (setq whitespace-style
       '(face tabs tab-mark newline newline-mark indentation::space trailing))
 (setq whitespace-display-mappings
-      '((newline-mark 10  [172 9] [182 10])
+      '((newline-mark 10  [172 10] [182 10])
+        (newline-mark 13  [8617])
         (tab-mark     9   [8677 9])
         (space-mark   32  [183])
-        (space-mark   160 [9251])
-        (newline-mark 13  [8617])))
+        (space-mark   160 [9251])))
 ;; ¬ | ¶ + перенос строки — для символа новых строк
 ;; ↩                      — для символа новых строк
 ;; ⇥ + табуляция          — для символа табуляции
