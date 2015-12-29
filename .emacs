@@ -283,7 +283,10 @@ static char *gnus-pointer[] = {
 ;; (add-to-list 'load-path "~/GitHub/forks/haskell-mode")
 ;; (add-to-list 'load-path "~/GitHub/structured-haskell-mode/elisp")
 
-;; (add-to-list 'custom-theme-load-path "~/GitHub/forks/color-theme-github-1")
+;; this requires Solarized theme from
+;; https://github.com/sellout/emacs-color-theme-solarized
+(add-to-list 'custom-theme-load-path
+             "~/.emacs.d/themes/emacs-color-theme-solarized")
 
 ;; Устанавливаем все нужные пакеты
 (require 'autopack)
