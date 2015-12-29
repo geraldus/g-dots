@@ -596,6 +596,18 @@ Argument IGNORE is not used."
 
 (require 'smarty-mode)
 
+(defun g:insert-php-debug-snippet ()
+  "Paste some code for PHP debugging."
+  (interactive)
+  (insert "echo '<pre>';\n")
+  (insert "var_dump(");
+  (save-excursion
+    (insert ");\n")
+    (insert "die;\n")))
+
+(define-key php-mode-map (kbd "C-c C-e")
+  #'g:insert-php-debug-snippet)
+
 
 ;; =======================================
 ;; Indent-Guide.el --- подсветка отступов.
