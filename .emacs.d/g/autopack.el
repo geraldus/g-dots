@@ -26,6 +26,7 @@
     markdown-mode
     multiple-cursors
     php-mode
+    seti-theme
     smex
     shakespeare-mode
     undo-tree
