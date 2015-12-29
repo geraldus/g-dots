@@ -395,7 +395,6 @@ static char *gnus-pointer[] = {
 (define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
 (define-key evil-motion-state-map (kbd "C-I") #'evil-jump-forward)
 (define-key evil-normal-state-map (kbd "C-r") #'isearch-backward)
-(define-key evil-normal-state-map (kbd "q") #'quit-window)
 
 
 ;; ==============
@@ -646,49 +645,6 @@ Argument IGNORE is not used."
 ;; ================================
 (require 'xah-syntax-color-hex)
 (add-hook 'prog-mode 'xah-syntax-color-hex)
-
-;; Цветовая схема
-(load-theme 'flatui)
-
-;; =============================================================================
-;; SHM customizations
-;; for light background
-;; (set-face-background 'shm-current-face "Honeydew1")
-;; (set-face-background 'shm-quarantine-face "misty rose")
-
-;; light blueish
-;; (set-face-background 'show-paren-match "#d7fffc")
-;; dark blueish
-;; (set-face-background 'show-paren-match "#1d538d")
-
-;; 'subatomic theme
-;; (set-face-background 'shm-quarantine-face "#421d17")
-;; (set-face-background 'shm-current-face "#232533")
-;; (set-face-background 'show-paren-match "#512869")
-
-;; 'toxi theme
-;; (set-face-background 'shm-quarantine-face "#421d17")
-;; (set-face-background 'shm-current-face "#202b1f")
-;; (set-face-background 'show-paren-match "#512869")
-
-;; 'snow theme
-;; (set-face-background 'shm-quarantine-face "#ffc8b6")
-;; (set-face-background 'shm-current-face "#fff9df")
-;; (set-face-background 'show-paren-match "#c9c2db")
-
-;; base16-monokai
-;; (set-face-background 'shm-quarantine-face "#56564b")
-;; (set-face-background 'shm-current-face "#48483f")
-;; (set-face-background 'show-paren-match "#aeb9b9")
-
-;; (set-face-background 'shm-quarantine-face "#fff5d7")
-;; (set-face-background 'shm-current-face "DodgerBlue4")
-;; (set-face-background 'shm-current-face "#27425f")
-;; for dark background
-;; (set-face-background 'shm-current-face "dim gray")
-;; solarized dark
-;; (set-face-background 'shm-current-face "#08383c")
-;; =============================================================================
 
 ;; (setq-default line-spacing 0.1)
 ;; (set-frame-font "American Typewriter-14:weight=normal" t)
