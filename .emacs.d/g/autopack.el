@@ -14,6 +14,8 @@
     dockerfile-mode
     exec-path-from-shell
     expand-region
+    evil-leader
+    evil
     fill-column-indicator
     flatui-theme
     flx-ido

@@ -390,6 +390,12 @@ static char *gnus-pointer[] = {
 (global-set-key (kbd "H-d") 'mc/mark-all-dwim)
 (global-set-key (kbd "C-S-<mouse1>") 'mc/add-cursor-on-click)
 
+(require 'evil)
+(define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
+(define-key evil-motion-state-map (kbd "C-I") #'evil-jump-forward)
+(define-key evil-normal-state-map (kbd "C-r") #'isearch-backward)
+(define-key evil-normal-state-map (kbd "q") #'quit-window)
+
 
 ;; ==============
 ;; Ace-Jump mode:
