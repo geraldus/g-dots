@@ -512,7 +512,7 @@ static char *gnus-pointer[] = {
 
 (require 'whitespace)
 (setq whitespace-style
-      '(face tabs spaces tab-mark indentation::space trailing))
+      '(face tabs tab-mark indentation::space trailing))
 (setq whitespace-display-mappings
       '((newline-mark 10  [182 10])
         (tab-mark     9   [8677 9])
