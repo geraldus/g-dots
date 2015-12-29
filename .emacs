@@ -292,8 +292,9 @@ static char *gnus-pointer[] = {
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
-;; Нет необходимости, так как путь до папки cabal/bin и так попадает в обе
-;; переменных
+
+(when (string-equal system-type "gnu/linux")
+  (add-to-list 'exec-path "~/.local/bin"))
 ;; (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
 ;;   (setenv "PATH" (concat my-cabal-path ":" (getenv "PATH")))
 ;;   (add-to-list 'exec-path my-cabal-path))
