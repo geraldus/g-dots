@@ -243,12 +243,13 @@ static char *gnus-pointer[] = {
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; ⌥ Option  ≡ Meta <M>
-(setq mac-option-modifier 'meta)
-;; ⌘ Command ≡ Control <C>
-(setq mac-command-modifier 'control)
-;; ⌃ Control ≡ Hyper <H>
-(setq mac-control-modifier 'hyper)
+(when (memq window-system '(mac ns))
+  ;; ⌥ Option  ≡ Meta <M>
+  (setq mac-option-modifier 'meta)
+  ;; ⌘ Command ≡ Control <C>
+  (setq mac-command-modifier 'control)
+  ;; ⌃ Control ≡ Hyper <H>
+  (setq mac-control-modifier 'hyper))
 
 (global-set-key (kbd "C-M-:") #'eval-buffer)
 (global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
