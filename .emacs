@@ -402,6 +402,28 @@ static char *gnus-pointer[] = {
 (eval-after-load "evil-maps"
   '(define-key evil-normal-state-map (kbd "q") nil))
 
+(add-hook
+ 'evil-mode-hook
+ (lambda ()
+   (if evil-mode
+       (modify-frame-parameters
+        nil
+        (list (cons 'cursor-type 'bar)))
+     (modify-frame-parameters
+      nil
+      (list (cons 'cursor-type 'box))))))
+(add-hook
+ 'evil-emacs-state-exit-hook
+ (lambda ()
+   (modify-frame-parameters
+    nil
+    (list (cons 'cursor-type 'bar)))))
+(add-hook
+ 'evil-emacs-state-entry-hook
+ (lambda ()
+   (modify-frame-parameters
+    nil
+    (list (cons 'cursor-type 'box)))))
 
 ;; ==============
 ;; Ace-Jump mode:
