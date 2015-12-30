@@ -258,8 +258,7 @@ static char *gnus-pointer[] = {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bold ((t (:weight normal))))
- '(whitespace-newline ((t (:inherit whitespace-space)))))
+ )
 
 
 ;; простые вещи в первую очередь!
@@ -290,7 +289,7 @@ static char *gnus-pointer[] = {
 ;; =================
 ;; Настраиваем пути:
 ;; =================
-(add-to-list 'load-path "~/GitHub/ace-jump-mode")
+;; (add-to-list 'load-path "~/GitHub/ace-jump-mode")
 ;; (add-to-list 'load-path "~/GitHub/forks/haskell-mode")
 ;; (add-to-list 'load-path "~/GitHub/structured-haskell-mode/elisp")
 
