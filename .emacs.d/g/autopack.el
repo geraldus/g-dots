@@ -8,7 +8,6 @@
 
 (defvar g/packages
   '(ace-jump-mode
-    aurora-theme
     company
     color-theme-sanityinc-tomorrow
     diff-hl
