@@ -6,9 +6,31 @@
 
 ;;; Code:
 
-;;; ---------------------------------------
+;; ==================
+;; Источники пакетов:
+;; ==================
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; Для таких важных библиотек совместимости как cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+(add-to-list 'load-path "~/.emacs.d/g")
+
+;; Устанавливаем все нужные пакеты
+(require 'autopack)
+(unless (g/packages-installed-p)
+  (message "%s" "Refreshing packages database…")
+  (package-refresh-contents)
+  (dolist (pkg g/packages)
+    (when (not (package-installed-p pkg))
+      (package-install pkg))))
+
+;;; =======================================
 ;;; Easy Customizations! Простые настройки!
-;;; ---------------------------------------
+;;; =======================================
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -264,21 +286,9 @@ static char *gnus-pointer[] = {
 (global-set-key (kbd "C-S-d") 'delete-backward-char)
 
 
-;; ==================
-;; Источники пакетов:
-;; ==================
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  ;; Для таких важных библиотек совместимости как cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)
-
 ;; =================
 ;; Настраиваем пути:
 ;; =================
-(add-to-list 'load-path "~/.emacs.d/g")
 (add-to-list 'load-path "~/GitHub/ace-jump-mode")
 ;; (add-to-list 'load-path "~/GitHub/forks/haskell-mode")
 ;; (add-to-list 'load-path "~/GitHub/structured-haskell-mode/elisp")
@@ -287,16 +297,6 @@ static char *gnus-pointer[] = {
 ;; https://github.com/sellout/emacs-color-theme-solarized
 (add-to-list 'custom-theme-load-path
              "~/.emacs.d/themes/emacs-color-theme-solarized")
-
-;; Устанавливаем все нужные пакеты
-(require 'autopack)
-(unless (g/packages-installed-p)
-  (message "%s" "Refreshing packages database…")
-  (package-refresh-contents)
-  (dolist (pkg g/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
-
 
 (when (string-equal system-type "gnu/linux")
   (add-to-list 'exec-path "~/.local/bin"))
