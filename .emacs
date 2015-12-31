@@ -145,7 +145,6 @@ static char *gnus-pointer[] = {
  '(haskell-process-path-ghci "ghci")
  '(haskell-process-reload-with-fbytecode t)
  '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type (quote stack-ghci))
  '(haskell-process-use-presentation-mode t)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
