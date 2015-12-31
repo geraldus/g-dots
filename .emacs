@@ -263,8 +263,8 @@ static char *gnus-pointer[] = {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
-
+ '(default ((t (:weight medium :height 130 :family "M+ 2m"))))
+ '(whitespace-newline ((t (:inherit whitespace-indentation :weight normal)))))
 
 ;; простые вещи в первую очередь!
 (tool-bar-mode -1)
@@ -689,7 +689,7 @@ Argument IGNORE is not used."
 ;; (set-frame-font "Menlo-13:weight=light" t)
 ;; (set-frame-font "NK57 Monospace-14:weight=light" t)
 ;; (set-frame-font "PT Mono-13" t)
-(set-frame-font "Liberation Mono-12" t)
+;; (set-frame-font "Liberation Mono-12" t)
 ;; (set-frame-font "Roboto Mono-12" t)
 ;; (set-frame-font "Ubuntu Mono-14" t)
 ;; Переназначение шрифта для кириллицы
