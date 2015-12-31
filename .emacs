@@ -465,13 +465,13 @@ static char *gnus-pointer[] = {
 (define-key interactive-haskell-mode-map (kbd "C-c C-t")
   #'haskell-mode-show-type-at)
 
-(defun haskell-utils/insert-error-not-implemented-at-point ()
+(defun g:/haskell-insert-error-not-implemented-at-point ()
   "Insert \'error \"not implemented\"\' operation at point."
   (interactive)
   (insert "error \"not implemented\""))
 
 (define-key interactive-haskell-mode-map (kbd "C-c C-e")
-  #'haskell-utils/insert-error-not-implemented-at-point)
+  #'g:haskell-insert-error-not-implemented-at-point)
 
 ;; (add-to-list 'auto-mode-alist '("\\.julius\\'" . js-mode))
 
@@ -574,25 +574,25 @@ static char *gnus-pointer[] = {
 (add-hook 'text-mode-hook (lambda () (fci-mode 1)))
 
 ;; отключение FCI при показе подсказок Company
-(defvar-local company-fci-mode-on-p nil)
+(defvar-local g:company-fci-mode-on-p nil)
 
-(defun company-turn-off-fci (&rest ignore)
+(defun g:company-turn-off-fci (&rest ignore)
   "Safely turn off Fill Column Indicator.
 If `fci-mode' is enabled disable it and store its state in special variable.
 Argument IGNORE is not used"
   (when (boundp 'fci-mode)
-    (setq company-fci-mode-on-p fci-mode)
+    (setq g:company-fci-mode-on-p fci-mode)
     (when fci-mode (fci-mode -1))))
 
-(defun company-maybe-turn-on-fci (&rest ignore)
+(defun g:company-maybe-turn-on-fci (&rest ignore)
     "Turn on Fill Column Indicator if it was enabled.
 If `fci-mode' was enabled turn it on.
 Argument IGNORE is not used."
-  (when company-fci-mode-on-p (fci-mode 1)))
+  (when g:company-fci-mode-on-p (fci-mode 1)))
 
-(add-hook 'company-completion-started-hook 'company-turn-off-fci)
-(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
-(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+(add-hook 'company-completion-started-hook #'g:company-turn-off-fci)
+(add-hook 'company-completion-finished-hook #'g:company-maybe-turn-on-fci)
+(add-hook 'company-completion-cancelled-hook #'g:company-maybe-turn-on-fci)
 
 
 ;; ====
@@ -647,7 +647,7 @@ Argument IGNORE is not used."
 ;; =======
 ;; Eshell:
 ;; =======
-(defun g/jump-to-eshell-buffer ()
+(defun g:jump-to-eshell-buffer ()
   "Quickly jump to *eshell* buffer."
   (interactive)
   (let ((cur (buffer-name))
@@ -658,7 +658,7 @@ Argument IGNORE is not used."
        (if (get-buffer esh)
            esh
          (eshell))))))
-(global-set-key (kbd "M-+") #'g/jump-to-eshell-buffer)
+(global-set-key (kbd "M-+") #'g:jump-to-eshell-buffer)
 
 
 ;; ========================
