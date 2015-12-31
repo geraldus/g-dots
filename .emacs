@@ -395,6 +395,9 @@ static char *gnus-pointer[] = {
 
 (require 'evil)
 (require 'evil-leader)
+(evil-mode 1)
+(global-evil-leader-mode)
+
 (define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
 (define-key evil-motion-state-map (kbd "C-I") #'evil-jump-forward)
 (define-key evil-normal-state-map (kbd "C-r") #'isearch-backward)
