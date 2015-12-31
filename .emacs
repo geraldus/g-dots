@@ -18,6 +18,10 @@
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/g")
+;; this requires Solarized theme from
+;; https://github.com/sellout/emacs-color-theme-solarized
+(add-to-list 'custom-theme-load-path
+             "~/.emacs.d/themes/emacs-color-theme-solarized/")
 
 ;; Устанавливаем все нужные пакеты
 (require 'autopack)
@@ -292,11 +296,6 @@ static char *gnus-pointer[] = {
 ;; (add-to-list 'load-path "~/GitHub/ace-jump-mode")
 ;; (add-to-list 'load-path "~/GitHub/forks/haskell-mode")
 ;; (add-to-list 'load-path "~/GitHub/structured-haskell-mode/elisp")
-
-;; this requires Solarized theme from
-;; https://github.com/sellout/emacs-color-theme-solarized
-(add-to-list 'custom-theme-load-path
-             "~/.emacs.d/themes/emacs-color-theme-solarized/")
 
 (when (string-equal system-type "gnu/linux")
   (add-to-list 'exec-path "~/.local/bin"))
