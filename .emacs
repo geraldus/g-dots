@@ -404,28 +404,23 @@ static char *gnus-pointer[] = {
 (eval-after-load "evil-maps"
   '(define-key evil-normal-state-map (kbd "q") nil))
 
-(add-hook
- 'evil-mode-hook
- (lambda ()
-   (if evil-mode
-       (modify-frame-parameters
-        nil
-        (list (cons 'cursor-type 'bar)))
-     (modify-frame-parameters
-      nil
-      (list (cons 'cursor-type 'box))))))
-(add-hook
- 'evil-emacs-state-exit-hook
- (lambda ()
-   (modify-frame-parameters
-    nil
-    (list (cons 'cursor-type 'bar)))))
-(add-hook
- 'evil-emacs-state-entry-hook
- (lambda ()
-   (modify-frame-parameters
-    nil
-    (list (cons 'cursor-type 'box)))))
+;; FIXME Это неправильное решение, нужно менять курсор отдельно для каждого
+;; буфера!
+;; (defun g:set-buffer-cursor (type)
+;;   "Change cursor appearance for current buffer."
+;;   (message "Current cursor type is %s" cursor-type)
+;;   (modify-frame-parameters
+;;    (selected-frame)
+;;    (list (cons 'cursor-type 'type)))
+;;   (message "New cursor type is %s" cursor-type))
+;; (defun g:evil-manage-cursor-type ()
+;;   "Change cursor type depending on evil mode."
+;;   (if (bound-and-true-p 'evil-mode)
+;;       (if (evil-emacs-state-p)
+;;           (g:set-buffer-cursor 'box)
+;;         (g:set-buffer-cursor 'bar))
+;;     (g:set-buffer-cursor 'box)))
+;; (add-hook 'buffer-list-update-hook #'g:evil-manage-cursor-type)
 
 ;; ==============
 ;; Ace-Jump mode:
