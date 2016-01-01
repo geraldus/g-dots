@@ -625,6 +625,7 @@ Argument IGNORE is not used."
 (define-key php-mode-map (kbd "C-c C-e")
   #'g:insert-php-debug-snippet)
 
+(global-set-key (kbd "C-c <backspace>") #'tramp-cleanup-this-connection)
 
 ;; =======================================
 ;; Indent-Guide.el --- подсветка отступов.
