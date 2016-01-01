@@ -262,7 +262,8 @@ static char *gnus-pointer[] = {
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:weight medium :height 130 :family "M+ 2m"))))
+ '(default ((t (:weight medium :height 130 :family "Ubuntu Mono"))))
+ '(whitespace-newline ((t (:inherit whitespace-space)))))
 
 ;; простые вещи в первую очередь!
 (tool-bar-mode -1)
