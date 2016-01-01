@@ -263,7 +263,6 @@ static char *gnus-pointer[] = {
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:weight medium :height 130 :family "M+ 2m"))))
- '(whitespace-newline ((t (:inherit whitespace-indentation :weight normal)))))
 
 ;; простые вещи в первую очередь!
 (tool-bar-mode -1)
@@ -598,15 +597,8 @@ Argument IGNORE is not used."
 ;; ====
 
 (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
 ;; Using web-mode for editing plain HTML files can be done this way
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
@@ -617,11 +609,10 @@ Argument IGNORE is not used."
             (diff-hl-mode 1)))
 
 (require 'php-mode)
+(require 'smarty-mode)
 (c-add-style "php-customized"
              '("php" (c-basic-offset . 2)))
 (add-hook 'php-mode-hook (lambda () (c-set-style "php-customized")))
-
-(require 'smarty-mode)
 
 (defun g:insert-php-debug-snippet ()
   "Paste some code for PHP debugging."
@@ -631,7 +622,6 @@ Argument IGNORE is not used."
   (save-excursion
     (insert ");\n")
     (insert "die;\n")))
-
 (define-key php-mode-map (kbd "C-c C-e")
   #'g:insert-php-debug-snippet)
 
