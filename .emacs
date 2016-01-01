@@ -462,8 +462,8 @@ static char *gnus-pointer[] = {
 (define-key interactive-haskell-mode-map (kbd "C-c C-t")
   #'haskell-mode-show-type-at)
 
-(defun g:/haskell-insert-error-not-implemented-at-point ()
-  "Insert \'error \"not implemented\"\' operation at point."
+(defun g:haskell-insert-error-not-implemented-at-point ()
+  "Insert 'error \"not implemented\"' operation at point."
   (interactive)
   (insert "error \"not implemented\""))
 
