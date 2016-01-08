@@ -394,9 +394,9 @@ static char *gnus-pointer[] = {
 (global-set-key (kbd "C-S-<mouse1>") 'mc/add-cursor-on-click)
 
 (require 'evil)
-(require 'evil-leader)
+;; (require 'evil-leader)
+;; (global-evil-leader-mode)
 (evil-mode 1)
-(global-evil-leader-mode)
 
 (define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
 (define-key evil-motion-state-map (kbd "C-I") #'evil-jump-forward)
