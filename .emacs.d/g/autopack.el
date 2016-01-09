@@ -29,9 +29,14 @@
     seti-theme
     smex
     shakespeare-mode
+    tangotango-theme
+    tronesque-theme
+    toxi-theme
     undo-tree
     web-mode
-    yaml-mode)
+    yaml-mode
+    zenburn-theme
+    zerodark-theme)
   "List of packages to be installed from archives.")
 
 (defun g/packages-installed-p ()
