@@ -16,6 +16,7 @@
     exec-path-from-shell
     expand-region
     evil
+    evil-surround
     fill-column-indicator
     flatui-theme
     flx-ido

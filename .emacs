@@ -401,6 +401,8 @@ static char *gnus-pointer[] = {
 (eval-after-load "evil-maps"
   '(define-key evil-normal-state-map (kbd "q") nil))
 
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;; ==============
 ;; Ace-Jump mode:
