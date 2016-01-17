@@ -177,6 +177,7 @@ static char *gnus-pointer[] = {
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
+ '(line-spacing 0.32)
  '(linum-format (quote dynamic))
  '(magit-diff-use-overlays nil)
  '(magit-last-seen-setup-instructions "1.4.0" t)
@@ -661,7 +662,6 @@ Argument IGNORE is not used."
 (require 'xah-syntax-color-hex)
 (add-hook 'prog-mode 'xah-syntax-color-hex)
 
-;; (setq-default line-spacing 0.1)
 ;; (set-frame-font "American Typewriter-14:weight=normal" t)
 ;; (set-frame-font "Anonymous Pro Minus-13" t)
 ;; (set-frame-font "Consolas-13" t)
