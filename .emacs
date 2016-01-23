@@ -6,9 +6,18 @@
 
 ;;; Code:
 
+
+;; ==============
+;; Сборка мусора:
+;; ==============
+
+(setq gc-cons-threshold 104857600)
+
+
 ;; ==================
 ;; Источники пакетов:
 ;; ==================
+
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.org/packages/") t)
