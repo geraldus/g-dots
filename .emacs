@@ -276,6 +276,7 @@ static char *gnus-pointer[] = {
 ;; простые вещи в первую очередь!
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(global-hl-line-mode 1)
 
 (when (memq window-system '(mac ns))
   ;; ⌥ Option  ≡ Meta <M>
@@ -527,12 +528,12 @@ static char *gnus-pointer[] = {
 ;; ============
 ;; Внешний вид:
 ;; ============
-(add-hook 'prog-mode-hook #'linum-mode)
+
 (column-number-mode t)
 (show-paren-mode t)
 
 ;; подстветка строк в при просмотре списка пакетов
-(add-hook 'package-menu-mode-hook #'hl-line-mode)
+;; (add-hook 'package-menu-mode-hook #'hl-line-mode)
 
 (require 'whitespace)
 (setq whitespace-style
