@@ -277,6 +277,7 @@ static char *gnus-pointer[] = {
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (global-hl-line-mode 1)
+(add-hook 'prog-mode-hook #'linum-mode)
 
 (when (memq window-system '(mac ns))
   ;; ⌥ Option  ≡ Meta <M>
