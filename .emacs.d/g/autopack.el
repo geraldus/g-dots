@@ -27,9 +27,12 @@
     markdown-mode
     multiple-cursors
     php-mode
+    powerline
+    powerline-evil
     seti-theme
     smex
     shakespeare-mode
+    spaceline
     tangotango-theme
     tronesque-theme
     toxi-theme
