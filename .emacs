@@ -664,6 +664,34 @@ Argument IGNORE is not used."
 (require 'xah-syntax-color-hex)
 (add-hook 'prog-mode 'xah-syntax-color-hex)
 
+
+(defvar g:bold-faces nil "A variable to hold a list of bold faces.")
+
+(add-hook
+ 'after-init-hook
+ (lambda ()
+   (dolist (face (face-list))
+     (when (eq (face-attribute face :weight nil nil) 'bold)
+       (push face g:bold-faces)
+       ))))
+
+(defun g:make-bold-faces-lighter (&optional weight)
+  "Make all bold faces lighter.
+By default it substitutes 'bold weight with 'regualar unless
+given optional argument, in that case sets weight to WEIGHT
+instead."
+    (let ((w (or weight 'regular)))
+      (dolist (face g:bold-faces)
+        (set-face-attribute face nil :weight w))))
+
+(defun g:restore-bold-faces ()
+  "Reset bold faces."
+  (dolist (face g:bold-faces)
+      (set-face-attribute face nil :weight 'bold)))
+
+(g:make-bold-faces-lighter)
+
+
 ;; (set-frame-font "American Typewriter-14:weight=normal" t)
 ;; (set-frame-font "Anonymous Pro Minus-13" t)
 ;; (set-frame-font "Consolas-13" t)
