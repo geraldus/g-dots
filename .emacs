@@ -376,6 +376,14 @@ static char *gnus-pointer[] = {
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+(require 'diminish)
+(diminish 'flycheck-mode "⨠")
+(diminish 'whitespace-mode "⨀")
+(diminish 'auto-revert-mode "↻")
+(diminish 'company-mode "⧊")
+(diminish 'undo-tree-mode "⎌")
+
+
 
 ;; ==================================
 ;; Умное перемещение в начало строки:
