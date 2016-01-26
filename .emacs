@@ -410,6 +410,7 @@ static char *gnus-pointer[] = {
 (require 'powerline-evil)
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
+(setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state)
 
 
 (define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
