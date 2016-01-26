@@ -9,7 +9,7 @@
 (if (eq system-type 'darwin)
     (progn
       (quail-define-package
-       "russian-mac" "Russian" "RU" nil
+       "russian-mac" "Russian" "⌘RU" nil
        "ЙЦУКЕН Russian Mac layout"
        nil t t t t nil nil nil nil nil t)
 
