@@ -201,6 +201,7 @@ static char *gnus-pointer[] = {
  '(pos-tip-foreground-color "#93a1a1")
  '(powerline-color1 "#1E1E1E")
  '(powerline-color2 "#111111")
+ '(powerline-default-separator (quote utf-8))
  '(safe-local-variable-values
    (quote
     ((hamlet/basic-offset . 2)
@@ -405,6 +406,11 @@ static char *gnus-pointer[] = {
 
 (require 'evil)
 (evil-mode 1)
+(require 'powerline)
+(require 'powerline-evil)
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+
 
 (define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
 (define-key evil-motion-state-map (kbd "C-I") #'evil-jump-forward)
