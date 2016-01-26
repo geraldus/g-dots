@@ -9,14 +9,14 @@
 (defvar g/packages
   '(ace-jump-mode
     aurora-theme
-    company
     color-theme-sanityinc-tomorrow
+    company
     diff-hl
     dockerfile-mode
-    exec-path-from-shell
-    expand-region
     evil
     evil-surround
+    exec-path-from-shell
+    expand-region
     fill-column-indicator
     flatui-theme
     flx-ido
@@ -30,12 +30,12 @@
     powerline
     powerline-evil
     seti-theme
-    smex
     shakespeare-mode
+    smex
     spaceline
     tangotango-theme
-    tronesque-theme
     toxi-theme
+    tronesque-theme
     undo-tree
     web-mode
     yaml-mode
