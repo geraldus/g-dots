@@ -310,9 +310,6 @@ static char *gnus-pointer[] = {
 
 (when (string-equal system-type "gnu/linux")
   (add-to-list 'exec-path "~/.local/bin"))
-;; (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
-;;   (setenv "PATH" (concat my-cabal-path ":" (getenv "PATH")))
-;;   (add-to-list 'exec-path my-cabal-path))
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
