@@ -367,7 +367,7 @@ static char *gnus-pointer[] = {
 ;; отключаем личины IDO, чтобы видеть личины FLX
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
-(setq uniquify-buffer-name-style 'post-forward)
+(setq uniquify-buffer-name-style #'post-forward)
 
 
 ;; ==========
@@ -698,7 +698,7 @@ instead."
   (dolist (face g:bold-faces)
       (set-face-attribute face nil :weight 'bold)))
 
-(g:make-bold-faces-lighter)
+(add-hook 'after-init-hook #'g:make-bold-faces-lighter)
 
 
 ;; (set-frame-font "American Typewriter-14:weight=normal" t)

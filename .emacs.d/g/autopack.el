@@ -12,6 +12,7 @@
     color-theme-sanityinc-tomorrow
     company
     diff-hl
+    diminish
     dockerfile-mode
     evil
     evil-surround
