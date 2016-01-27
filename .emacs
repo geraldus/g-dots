@@ -377,11 +377,13 @@ static char *gnus-pointer[] = {
 (global-undo-tree-mode)
 
 (require 'diminish)
-(diminish 'flycheck-mode "⨠")
-(diminish 'whitespace-mode "⨀")
-(diminish 'auto-revert-mode "↻")
-(diminish 'company-mode "⧊")
-(diminish 'undo-tree-mode "⎌")
+(add-hook 'after-init-hook
+          (lambda ()
+            (diminish 'flycheck-mode "⨠")
+            (diminish 'whitespace-mode "⨀")
+            (diminish 'auto-revert-mode "↻")
+            (diminish 'company-mode "⧊")
+            (diminish 'undo-tree-mode "⎌")))
 
 
 
