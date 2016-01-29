@@ -635,17 +635,17 @@ instead."
 This function checks the value of `g:bold-faces-dim' and if its
 value other to nil it replaces faces weight according to value.
 Otherwise it restores default bold weight."
-  (g:collect-bold-faces)
+  (g:bold-faces-collect)
   (if (eq g:bold-faces-dim nil)
-      (g:restore-bold-faces)
+      (g:bold-faces-restore)
     (let ((w (if (eq g:bold-faces-dim t) nil g:bold-faces-dim)))
       (g:bold-faces-make-lighter w))))
 
 (setq g:bold-faces-dim t)
 
-(add-hook 'after-init-hook #'g:bold-faces-handle)
-(add-hook 'after-change-major-mode-hook #'g:bold-faces-handle)
-(add-hook 'buffer-list-update-hook #'g:bold-faces-handle)
+;; (add-hook 'after-init-hook #'g:bold-faces-handle)
+;; (add-hook 'after-change-major-mode-hook #'g:bold-faces-handle)
+;; (add-hook 'buffer-list-update-hook #'g:bold-faces-handle)
 
 
 ;; Переназначение шрифта для кириллицы
