@@ -345,7 +345,7 @@ static char *gnus-pointer[] = {
 ;; отключаем личины IDO, чтобы видеть личины FLX
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
-(setq uniquify-buffer-name-style #'post-forward)
+(setq uniquify-buffer-name-style 'post-forward)
 
 
 ;; ==========
