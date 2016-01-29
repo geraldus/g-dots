@@ -190,7 +190,6 @@ static char *gnus-pointer[] = {
  '(linum-format (quote dynamic))
  '(magit-diff-use-overlays nil)
  '(magit-last-seen-setup-instructions "1.4.0" t)
- '(magit-use-overlays t t)
  '(main-line-color1 "#1E1E1E")
  '(main-line-color2 "#111111")
  '(main-line-separator-style (quote chamfer))
@@ -486,7 +485,6 @@ static char *gnus-pointer[] = {
 (add-hook 'prog-mode-hook #'turn-on-diff-hl-mode)
 
 (require 'magit)
-(setq magit-use-overlays t)
 (global-set-key (kbd "C-S-g") #'magit-status)
 
 
