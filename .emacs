@@ -280,6 +280,7 @@ static char *gnus-pointer[] = {
 (global-hl-line-mode 1)
 (add-hook 'prog-mode-hook #'linum-mode)
 
+
 (when (memq window-system '(mac ns))
   ;; ⌥ Option  ≡ Meta <M>
   (setq mac-option-modifier 'meta)
@@ -297,43 +298,21 @@ static char *gnus-pointer[] = {
 ;; ===========================
 ;; Некоторые сочетания клавиш:
 ;; ===========================
+
 (global-set-key (kbd "H-SPC") 'set-mark-command)
+
 (global-set-key (kbd "C-S-d") 'delete-backward-char)
 
 
 ;; =================
 ;; Настраиваем пути:
 ;; =================
-;; (add-to-list 'load-path "~/GitHub/ace-jump-mode")
-;; (add-to-list 'load-path "~/GitHub/forks/haskell-mode")
-;; (add-to-list 'load-path "~/GitHub/structured-haskell-mode/elisp")
 
 (when (string-equal system-type "gnu/linux")
   (add-to-list 'exec-path "~/.local/bin"))
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-;; http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
-;; Возможность сохранять доступные только для чтения файлы от пользователя root
-;; не работает
-;; (defadvice ido-find-file (after find-file-sudo activate)
-;;   "Find file as root if necessary."
-;;   (unless (and buffer-file-name
-;;                (file-writable-p buffer-file-name))
-;;     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-;;
-;; не работает
-;; (defun sudo-edit (&optional arg)
-;;   "Edit currently visited file as root.
-
-;; With a prefix ARG prompt for a file to visit.
-;; Will also prompt for a file to visit if current
-;; buffer is not visiting a file."
-;;   (interactive "P")
-;;   (if (or arg (not buffer-file-name))
-;;       (find-file (concat "/sudo:root@localhost:"
-;;                          (ido-read-file-name "Find file(as root): ")))
-;;     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 ;; ==================================================
 ;; Умная русская раскладка клавиатуры, с учётом ОС Х:
@@ -345,6 +324,7 @@ static char *gnus-pointer[] = {
 ;; ===================================
 ;; Резервные копии и запись «истории»:
 ;; ===================================
+
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 ;; Запоминаем введённые команды
 (require 'savehist)
@@ -356,6 +336,7 @@ static char *gnus-pointer[] = {
 ;; ====
 ;; IDo:
 ;; ====
+
 (require 'ido)
 (require 'flx-ido)
 (ido-mode t)
@@ -429,9 +410,11 @@ static char *gnus-pointer[] = {
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+
 ;; ==============
 ;; Ace-Jump mode:
 ;; ==============
+
 ;; FIXME перенести в отдельный файл
 (autoload
   'ace-jump-mode
@@ -444,6 +427,7 @@ static char *gnus-pointer[] = {
 ;; ========
 ;; Haskell:
 ;; ========
+
 (require 'haskell)
 (require 'haskell-mode)
 (require 'haskell-interactive-mode)
@@ -453,19 +437,6 @@ static char *gnus-pointer[] = {
 (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
-;; (add-hook 'haskell-mode-hook #'turn-on-haskell-doc-mode)
-;; (add-hook 'haskell-mode-hook #'turn-on-haskell-decl-scan)
-
-
-;; (add-hook 'haskell-mode-hook
-;;           (lambda ()
-;;             (remove-hook 'completion-at-point-functions
-;;                          #'haskell-process-completions-at-point
-;;                          t)
-;;             (add-hook 'completion-at-point-functions
-;;                       #'haskell-completions-sync-completions-at-point
-;;                       nil
-;;                       t)))
 
 (define-key interactive-haskell-mode-map (kbd "C-c C-t")
   #'haskell-mode-show-type-at)
@@ -478,12 +449,11 @@ static char *gnus-pointer[] = {
 (define-key interactive-haskell-mode-map (kbd "C-c C-e")
   #'g:haskell-insert-error-not-implemented-at-point)
 
-;; (add-to-list 'auto-mode-alist '("\\.julius\\'" . js-mode))
-
 
 ;; =========
 ;; FlyCheck:
 ;; =========
+
 (require 'flycheck)
 (setq flycheck-emacs-lisp-load-path 'inherit)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -492,6 +462,7 @@ static char *gnus-pointer[] = {
 ;; ========
 ;; CompAny:
 ;; ========
+
 (require 'company)
 (add-hook 'after-init-hook #'global-company-mode)
 (global-set-key (kbd "<f8>") #'company-mode)
@@ -510,6 +481,7 @@ static char *gnus-pointer[] = {
 ;; ====================
 ;; Совместимость с Git:
 ;; ====================
+
 (require 'diff-hl)
 (add-hook 'prog-mode-hook #'turn-on-diff-hl-mode)
 
@@ -521,6 +493,7 @@ static char *gnus-pointer[] = {
 ;; ========
 ;; Org Mode
 ;; ========
+
 (require 'org)
 (setq org-src-fontify-natively t)
 (setq org-fontify-emphasized-text t)
@@ -529,6 +502,7 @@ static char *gnus-pointer[] = {
 ;; =========================
 ;; Разблокированные функции:
 ;; =========================
+
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
@@ -536,6 +510,7 @@ static char *gnus-pointer[] = {
 ;; =======
 ;; Docker:
 ;; =======
+
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
@@ -572,6 +547,7 @@ static char *gnus-pointer[] = {
 ;; ====
 ;; FCI:
 ;; ====
+
 (require 'fill-column-indicator)
 (setq whitespace-line-column 80)
 (setq fci-rule-width 2)
@@ -644,6 +620,7 @@ Argument IGNORE is not used."
 ;; =======
 ;; Eshell:
 ;; =======
+
 (defun g:jump-to-eshell-buffer ()
   "Quickly jump to *eshell* buffer."
   (interactive)
@@ -700,33 +677,12 @@ instead."
 (add-hook 'after-init-hook #'g:make-bold-faces-lighter)
 
 
-;; (set-frame-font "American Typewriter-14:weight=normal" t)
-;; (set-frame-font "Anonymous Pro Minus-13" t)
-;; (set-frame-font "Consolas-13" t)
-;; (set-frame-font "Courier New-13:weight=light" t)
-;; (set-frame-font "Fira Mono-12" t)
-;; (set-frame-font "Input-14" t)
-;; (set-frame-font "Inconsolata LGC-12" t)
-;; (set-frame-font "Liberation Mono-13" t)
-;; (set-frame-font "M+ 1m-13:weight=light" t)
-;; (set-frame-font "Menlo-13:weight=light" t)
-;; (set-frame-font "NK57 Monospace-14:weight=light" t)
-;; (set-frame-font "PT Mono-13" t)
-;; (set-frame-font "Liberation Mono-12" t)
-;; (set-frame-font "Roboto Mono-12" t)
-;; (set-frame-font "Ubuntu Mono-14" t)
 ;; Переназначение шрифта для кириллицы
 ;; TODO Добавить остальные группы кириллицы
 ;;      Переназначать шрифт только в тех случаях,
 ;;      когда отсутствует поддержка кириллицы в основном шрифте
 ;; (set-fontset-font "fontset-default" '(#x0400 . #x04ff) "Courier New") ;; ВКЛ
 ;; (set-fontset-font "fontset-default" '(#x0400 . #x04ff) nil) ;; - ОТКЛ
-
-;;; Спросить про Typewriter шрифт
-;;; Спросить про инициализацию записи
-
-;; (set-fontset-font "fontset-default" '(#x0000 . #x04ff) "American Typewriter") ;; ВКЛ
-;; (set-fontset-font "fontset-default" '(#x0001 . #x04ff) nil) ;; - ОТКЛ
 
 (provide '.emacs)
 ;;; .emacs ends here
