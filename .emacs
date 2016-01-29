@@ -648,31 +648,52 @@ Argument IGNORE is not used."
 (add-hook 'prog-mode 'xah-syntax-color-hex)
 
 
-(defvar g:bold-faces nil "A variable to hold a list of bold faces.")
+(defvar g:bold-faces-list nil "A variable to hold a list of bold faces.")
 
-(add-hook
- 'after-init-hook
- (lambda ()
-   (dolist (face (face-list))
-     (when (eq (face-attribute face :weight nil nil) 'bold)
-       (push face g:bold-faces)
-       ))))
+(defvar g:bold-faces-dim nil
+  "A flag indicating should bold faces be lighter.
+Possible values are: either t or nil or explicit symbol that
+should be used as face `:weight'.  nil means that bold faces
+should have default bold weight, t changes bold to regular, if
+explicit symbol is given it will be used as weight for bold
+faces.")
 
-(defun g:make-bold-faces-lighter (&optional weight)
+(defun g:bold-faces-collect ()
+  "Find all faces with weight set to 'bold and store them into special variable."
+  (dolist (face (face-list))
+    (when (eq (face-attribute face :weight nil nil) 'bold)
+      (add-to-list 'g:bold-faces-list face))))
+
+(defun g:bold-faces-make-lighter (&optional weight)
   "Make all bold faces lighter.
 By default it substitutes 'bold weight with 'regualar unless
 given optional argument, in that case sets weight to WEIGHT
 instead."
     (let ((w (or weight 'regular)))
-      (dolist (face g:bold-faces)
+      (dolist (face g:bold-faces-list)
         (set-face-attribute face nil :weight w))))
 
-(defun g:restore-bold-faces ()
+(defun g:bold-faces-restore ()
   "Reset bold faces."
-  (dolist (face g:bold-faces)
+  (dolist (face g:bold-faces-list)
       (set-face-attribute face nil :weight 'bold)))
 
-(add-hook 'after-init-hook #'g:make-bold-faces-lighter)
+(defun g:bold-faces-handle ()
+  "Handle bold faces.
+This function checks the value of `g:bold-faces-dim' and if its
+value other to nil it replaces faces weight according to value.
+Otherwise it restores default bold weight."
+  (g:collect-bold-faces)
+  (if (eq g:bold-faces-dim nil)
+      (g:restore-bold-faces)
+    (let ((w (if (eq g:bold-faces-dim t) nil g:bold-faces-dim)))
+      (g:bold-faces-make-lighter w))))
+
+(setq g:bold-faces-dim t)
+
+(add-hook 'after-init-hook #'g:bold-faces-handle)
+(add-hook 'after-change-major-mode-hook #'g:bold-faces-handle)
+(add-hook 'buffer-list-update-hook #'g:bold-faces-handle)
 
 
 ;; Переназначение шрифта для кириллицы
