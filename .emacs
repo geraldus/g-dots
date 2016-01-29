@@ -50,100 +50,116 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#383830" "#f92672" "#a6e22e" "#f4bf75" "#66d9ef" "#ae81ff" "#66d9ef" "#f5f4f1"])
- '(ansi-term-color-vector
-   [unspecified "#FAFAFA" "#FF1744" "#66BB6A" "#FFA000" "#42A5F5" "#7E57C2" "#0097A7" "#546E7A"] t)
- '(beacon-color "#ec4780")
  '(c-basic-offset 2)
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
  '(company-selection-wrap-around t)
  '(company-show-numbers t)
  '(company-tooltip-align-annotations t)
- '(compilation-message-face (quote default))
  '(css-indent-offset 2)
- '(cua-global-mark-cursor-color "#2aa198")
- '(cua-normal-cursor-color "#839496")
- '(cua-overwrite-cursor-color "#b58900")
- '(cua-read-only-cursor-color "#859900")
- '(custom-theme-directory "~/.emacs.d/themes/")
- '(debug-on-error nil)
- '(diary-entry-marker (quote font-lock-variable-name-face))
- '(electric-pair-pairs (quote ((34 . 34) (96 . 96))))
- '(emms-mode-line-icon-image-cache
-   (quote
-    (image :type xpm :ascent center :data "/* XPM */
-static char *note[] = {
-/* width height num_colors chars_per_pixel */
-\"    10   11        2            1\",
-/* colors */
-\". c #358d8d\",
-\"# c None s None\",
-/* pixels */
-\"###...####\",
-\"###.#...##\",
-\"###.###...\",
-\"###.#####.\",
-\"###.#####.\",
-\"#...#####.\",
-\"....#####.\",
-\"#..######.\",
-\"#######...\",
-\"######....\",
-\"#######..#\" };")))
+ '(cursor-type (quote bar))
  '(eshell-buffer-maximum-lines 4096)
  '(eshell-output-filter-functions
    (quote
-    (eshell-truncate-buffer eshell-postoutput-scroll-to-bottom eshell-handle-control-codes eshell-handle-ansi-color eshell-watch-for-password-prompt)))
- '(fci-rule-color "#49483E")
+    (eshell-truncate-buffer
+     eshell-postoutput-scroll-to-bottom
+     eshell-handle-control-codes
+     eshell-handle-ansi-color
+     eshell-watch-for-password-prompt)))
  '(fill-column 80)
  '(flx-ido-mode t)
- '(flycheck-check-syntax-automatically (quote (save idle-change new-line mode-enabled)))
- '(flycheck-haskell-hlint-executable "hlint-emacs")
  '(flycheck-temp-prefix ".flycheck")
- '(frame-background-mode (quote dark))
  '(fringe-mode (quote (8 . 4)) nil (fringe))
- '(gnus-logo-colors (quote ("#0d7b72" "#adadad")) t)
- '(gnus-mode-line-image-cache
-   (quote
-    (image :type xpm :ascent center :data "/* XPM */
-static char *gnus-pointer[] = {
-/* width height num_colors chars_per_pixel */
-\"    18    13        2            1\",
-/* colors */
-\". c #358d8d\",
-\"# c None s None\",
-/* pixels */
-\"##################\",
-\"######..##..######\",
-\"#####........#####\",
-\"#.##.##..##...####\",
-\"#...####.###...##.\",
-\"#..###.######.....\",
-\"#####.########...#\",
-\"###########.######\",
-\"####.###.#..######\",
-\"######..###.######\",
-\"###....####.######\",
-\"###..######.######\",
-\"###########.######\" };")) t)
  '(grep-find-ignored-directories
    (quote
-    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "tmp" ".cabal-sandbox" "dist" ".stack-work" "work/smarty")))
+    ("SCCS"
+     "RCS"
+     "CVS"
+     "MCVS"
+     ".svn"
+     ".git"
+     ".hg"
+     ".bzr"
+     "_MTN"
+     "_darcs"
+     "{arch}"
+     "tmp"
+     ".cabal-sandbox"
+     "dist"
+     ".stack-work"
+     "work/smarty")))
  '(grep-find-ignored-files
    (quote
-    (".#*" "*.hi" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "#*#")))
+    (".#*"
+     "*.hi"
+     "*.o"
+     "*~"
+     "*.bin"
+     "*.lbin"
+     "*.so"
+     "*.a"
+     "*.ln"
+     "*.blg"
+     "*.bbl"
+     "*.elc"
+     "*.lof"
+     "*.glo"
+     "*.idx"
+     "*.lot"
+     "*.fmt"
+     "*.tfm"
+     "*.class"
+     "*.fas"
+     "*.lib"
+     "*.mem"
+     "*.x86f"
+     "*.sparcf"
+     "*.dfsl"
+     "*.pfsl"
+     "*.d64fsl"
+     "*.p64fsl"
+     "*.lx64fsl"
+     "*.lx32fsl"
+     "*.dx64fsl"
+     "*.dx32fsl"
+     "*.fx64fsl"
+     "*.fx32fsl"
+     "*.sx64fsl"
+     "*.sx32fsl"
+     "*.wx64fsl"
+     "*.wx32fsl"
+     "*.fasl"
+     "*.ufsl"
+     "*.fsl"
+     "*.dxl"
+     "*.lo"
+     "*.la"
+     "*.gmo"
+     "*.mo"
+     "*.toc"
+     "*.aux"
+     "*.cp"
+     "*.fn"
+     "*.ky"
+     "*.pg"
+     "*.tp"
+     "*.vr"
+     "*.cps"
+     "*.fns"
+     "*.kys"
+     "*.pgs"
+     "*.tps"
+     "*.vrs"
+     "*.pyc"
+     "*.pyo"
+     "#*#"
+     "*[.-]min.js")))
  '(grep-highlight-matches t)
  '(haskell-hoogle-command "hoogle")
  '(haskell-indent-spaces 2)
  '(haskell-indentation-show-indentations nil)
  '(haskell-indentation-show-indentations-after-eol nil)
- '(haskell-process-args-cabal-repl
-   (quote
-    ("--ghc-options=-ferror-spans" "--with-ghc=ghci-ng")))
+ '(haskell-process-args-cabal-repl (quote ("--ghc-options=-ferror-spans")))
  '(haskell-process-args-stack-ghci (quote ("--ghc-options=-ferror-spans")))
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
@@ -153,32 +169,7 @@ static char *gnus-pointer[] = {
  '(haskell-process-use-presentation-mode t)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-symbol-colors
-   (--map
-    (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
- '(highlight-symbol-foreground-color "#93a1a1")
- '(highlight-tail-colors
-   (quote
-    (("#eee8d5" . 0)
-     ("#B4C342" . 20)
-     ("#69CABF" . 30)
-     ("#69B7F0" . 50)
-     ("#DEB542" . 60)
-     ("#F2804F" . 70)
-     ("#F771AC" . 85)
-     ("#eee8d5" . 100))))
  '(hindent-style "chris-done")
- '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
- '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(hl-paren-background-colors (quote ("#2492db" "#95a5a6" nil)))
- '(hl-paren-colors (quote ("#ecf0f1" "#ecf0f1" "#c0392b")))
  '(ido-ignore-directories
    (quote
     ("\\`CVS/" "\\`\\.\\./" "\\`\\./" "\\`~/Downloads/")))
@@ -186,20 +177,11 @@ static char *gnus-pointer[] = {
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
- '(line-spacing 0.32)
+ '(line-spacing 0)
  '(linum-format (quote dynamic))
  '(magit-diff-use-overlays nil)
  '(magit-last-seen-setup-instructions "1.4.0" t)
- '(main-line-color1 "#1E1E1E")
- '(main-line-color2 "#111111")
  '(main-line-separator-style (quote chamfer))
- '(nrepl-message-colors
-   (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
- '(pos-tip-background-color "#073642")
- '(pos-tip-foreground-color "#93a1a1")
- '(powerline-color1 "#1E1E1E")
- '(powerline-color2 "#111111")
  '(powerline-default-separator (quote utf-8))
  '(safe-local-variable-values
    (quote
@@ -207,71 +189,33 @@ static char *gnus-pointer[] = {
      (haskell-process-use-ghci . t)
      (haskell-indent-spaces . 2)
      (haskell-process-type . stack-ghci)
-     (haskell-process-type quote stack-ghci)
      (haskell-stylish-on-save)
      (flycheck-haskell-ghc-executable . "ghcjs"))))
  '(savehist-file "~/.emacs.d/tmp/savehist")
- '(shm-indent-spaces 4)
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(smarty-left-delimiter "<{")
  '(smarty-right-delimiter "}>")
  '(smex-history-length 33)
- '(sml/active-background-color "#34495e")
- '(sml/active-foreground-color "#ecf0f1")
- '(sml/inactive-background-color "#dfe4ea")
- '(sml/inactive-foreground-color "#34495e")
+ '(solarized-high-contrast-mode-line t)
  '(tab-stop-list (number-sequence 2 80 2))
  '(tab-width 2)
- '(tabbar-background-color "#ffffff")
- '(term-default-bg-color "#002b36")
- '(term-default-fg-color "#839496")
- '(tramp-auto-save-directory "~/.emacs.d/tmp")
- '(tramp-default-method "ssh")
  '(undo-limit 10485760)
  '(undo-strong-limit 10485760)
  '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#dc322f")
-     (40 . "#c85d17")
-     (60 . "#be730b")
-     (80 . "#b58900")
-     (100 . "#a58e00")
-     (120 . "#9d9100")
-     (140 . "#959300")
-     (160 . "#8d9600")
-     (180 . "#859900")
-     (200 . "#669b32")
-     (220 . "#579d4c")
-     (240 . "#489e65")
-     (260 . "#399f7e")
-     (280 . "#2aa198")
-     (300 . "#2898af")
-     (320 . "#2793ba")
-     (340 . "#268fc6")
-     (360 . "#268bd2"))))
- '(vc-annotate-very-old-color "#93115C")
  '(web-mode-code-indent-offset 2)
  '(web-mode-css-indent-offset 2)
  '(web-mode-enable-current-column-highlight t)
  '(web-mode-enable-current-element-highlight t)
- '(web-mode-markup-indent-offset 2)
- '(weechat-color-list
-   (quote
-    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
- '(when (not (facep (aref ansi-term-color-vector 0))))
- '(xterm-color-names
-   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
- '(xterm-color-names-bright
-   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
+ '(web-mode-markup-indent-offset 2))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:weight medium :height 130 :family "Ubuntu Mono"))))
- '(whitespace-newline ((t (:inherit whitespace-space)))))
+ ;; '(default ((t (:weight thin :height 240 :family "Source Code Pro"))))
+ )
+
+
 ;; Простые вещи в первую очередь.  Это нужно, чтобы в случае неудачной
 ;; конфигрурации был доступен самый важный функционал.
 
