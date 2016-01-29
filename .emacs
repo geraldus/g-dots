@@ -272,11 +272,18 @@ static char *gnus-pointer[] = {
  ;; If there is more than one, they won't work right.
  '(default ((t (:weight medium :height 130 :family "Ubuntu Mono"))))
  '(whitespace-newline ((t (:inherit whitespace-space)))))
+;; Простые вещи в первую очередь.  Это нужно, чтобы в случае неудачной
+;; конфигрурации был доступен самый важный функционал.
 
-;; простые вещи в первую очередь!
+;; ============
+;; Внешний вид:
+;; ============
+
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (global-hl-line-mode 1)
+(column-number-mode t)
+(show-paren-mode t)
 (add-hook 'prog-mode-hook #'linum-mode)
 
 
@@ -288,11 +295,6 @@ static char *gnus-pointer[] = {
   ;; ⌃ Control ≡ Hyper <H>
   (setq mac-control-modifier 'hyper))
 
-(global-set-key (kbd "C-M-:") #'eval-buffer)
-(global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
-
-(electric-indent-mode 1)
-(electric-pair-mode 1)
 
 ;; ===========================
 ;; Некоторые сочетания клавиш:
@@ -301,6 +303,21 @@ static char *gnus-pointer[] = {
 (global-set-key (kbd "H-SPC") 'set-mark-command)
 
 (global-set-key (kbd "C-S-d") 'delete-backward-char)
+
+(global-set-key (kbd "C-M-:") #'eval-buffer)
+
+(global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
+
+;; ==========
+;; Undo-Tree:
+;; ==========
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+
+(electric-indent-mode 1)
+(electric-pair-mode 1)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 
 ;; =================
@@ -347,11 +364,16 @@ static char *gnus-pointer[] = {
 (setq uniquify-buffer-name-style 'post-forward)
 
 
-;; ==========
-;; Undo-Tree:
-;; ==========
-(require 'undo-tree)
-(global-undo-tree-mode)
+;; =====
+;; Smex:
+;; =====
+
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") #'smex)
+(global-set-key (kbd "M-X") #'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") #'execute-extended-command)
+
 
 (require 'diminish)
 (add-hook 'after-init-hook
@@ -362,14 +384,28 @@ static char *gnus-pointer[] = {
             (diminish 'company-mode "⧊")
             (diminish 'undo-tree-mode "⎌")))
 
+(require 'whitespace)
+(setq whitespace-style
+      '(face tabs tab-mark newline newline-mark indentation::space trailing))
+(setq whitespace-display-mappings
+      '((newline-mark 10  [172 10] [182 10])
+        (newline-mark 13  [8617])
+        (tab-mark     9   [8677 9])
+        (space-mark   32  [183])
+        (space-mark   160 [9251])))
+;; ¬ | ¶ + перенос строки — для символа новых строк
+;; ↩                      — для символа новых строк
+;; ⇥ + табуляция          — для символа табуляции
+;; ·                      — для пробела
+;; ␣                      — для неразрывного пробела
+;; если что-то не понятно - прочти описания переменных, сразу всё вспомнишь
+
+(add-hook 'prog-mode-hook #'whitespace-mode)
 
 
-;; ==================================
 ;; Умное перемещение в начало строки:
-;; ==================================
 (require 'smarter-move-begining-of-line)
-
-;; быстро выделить всё до конца строки
+;; Быстро выделить всё до конца строки
 (require 'mark-from-point-to-line-end)
 (global-set-key (kbd "C-S-<return>") 'mark-from-point-to-line-end)
 
@@ -377,19 +413,13 @@ static char *gnus-pointer[] = {
 ;; ==============
 ;; Expand-region:
 ;; ==============
+
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 
-;; =================
-;; Multiple-Cursors:
-;; =================
-(require 'multiple-cursors)
-
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-;; (global-unset-key (kbd "H-S-d")) ;; C-S-d >> C-d не используется напрямую
-(global-set-key (kbd "H-d") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-S-<mouse1>") 'mc/add-cursor-on-click)
+;; ====================
+;; Extensible Vi Layer:
+;; ====================
 
 (require 'evil)
 (evil-mode 1)
@@ -401,7 +431,9 @@ static char *gnus-pointer[] = {
 
 
 (define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
+(define-key evil-normal-state-map (kbd "<tab>") #'indent-for-tab-command)
 (define-key evil-motion-state-map (kbd "C-I") #'evil-jump-forward)
+(define-key evil-normal-state-map (kbd "C-I") #'evil-jump-forward)
 (define-key evil-normal-state-map (kbd "C-r") #'isearch-backward)
 (eval-after-load "evil-maps"
   '(define-key evil-normal-state-map (kbd "q") nil))
@@ -467,15 +499,6 @@ static char *gnus-pointer[] = {
 (global-set-key (kbd "<f8>") #'company-mode)
 
 
-;; =====
-;; Smex:
-;; =====
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") #'smex)
-(global-set-key (kbd "M-X") #'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") #'execute-extended-command)
-
 
 ;; ====================
 ;; Совместимость с Git:
@@ -497,6 +520,19 @@ static char *gnus-pointer[] = {
 (setq org-fontify-emphasized-text t)
 
 
+;; =================
+;; Multiple-Cursors:
+;; =================
+
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;; (global-unset-key (kbd "H-S-d")) ;; C-S-d >> C-d не используется напрямую
+(global-set-key (kbd "H-d") 'mc/mark-all-dwim)
+(global-set-key (kbd "C-S-<mouse1>") 'mc/add-cursor-on-click)
+
+
 ;; =========================
 ;; Разблокированные функции:
 ;; =========================
@@ -513,34 +549,6 @@ static char *gnus-pointer[] = {
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 
-;; ============
-;; Внешний вид:
-;; ============
-
-(column-number-mode t)
-(show-paren-mode t)
-
-;; подстветка строк в при просмотре списка пакетов
-;; (add-hook 'package-menu-mode-hook #'hl-line-mode)
-
-(require 'whitespace)
-(setq whitespace-style
-      '(face tabs tab-mark newline newline-mark indentation::space trailing))
-(setq whitespace-display-mappings
-      '((newline-mark 10  [172 10] [182 10])
-        (newline-mark 13  [8617])
-        (tab-mark     9   [8677 9])
-        (space-mark   32  [183])
-        (space-mark   160 [9251])))
-;; ¬ | ¶ + перенос строки — для символа новых строк
-;; ↩                      — для символа новых строк
-;; ⇥ + табуляция          — для символа табуляции
-;; ·                      — для пробела
-;; ␣                      — для неразрывного пробела
-;; если что-то не понятно - прочти описания переменных, сразу всё вспомнишь
-
-(add-hook 'prog-mode-hook #'whitespace-mode)
-(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;; ====
 ;; FCI:
