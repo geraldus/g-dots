@@ -33,7 +33,7 @@
 ;;
 ;;   (indent-guide-global-mode)
 
-;; Column lines are propertized with "indent-guide-face". So you may
+;; Column lines are propertized with "indent-guide-face".  So you may
 ;; configure this face to make guides more pretty in your colorscheme.
 ;;
 ;;   (set-face-background 'indent-guide-face "dimgray")
@@ -103,14 +103,12 @@
   :group 'indent-guide)
 
 (defcustom indent-guide-delay nil
-  "When a positive number, rendering guide lines is delayed DELAY
-  seconds."
+  "When a positive number, rendering guide lines is delayed DELAY seconds."
   :type 'number
   :group 'indent-guide)
 
 (defcustom indent-guide-threshold -1
-  "Guide lines are drawn only when the column number is over this
-  value."
+  "Guide lines are drawn only when the column number is over this value."
   :type 'number
   :group 'indent-guide)
 
@@ -133,7 +131,8 @@
          (overlays-in (point-min) (point-max)))))
 
 (defun indent-guide--indentation-candidates (level)
-  "*Internal function for `indent-guide--beginning-of-level'."
+  "Internal function for `indent-guide--beginning-of-level'.
+FIXME document LEVEL arg."
   (cond ((<= level 0)
          (list ""))
         ((>= level tab-width)
@@ -145,8 +144,7 @@
                (indent-guide--indentation-candidates (1- level))))))
 
 (defun indent-guide--beginning-of-level ()
-  "Move to the beginning of current indentation level and return
-the point."
+  "Move to the beginning of current indentation level and return the point."
   (back-to-indentation)
   (let* ((base-level (if (not (eolp))
                          (current-column)
@@ -170,7 +168,7 @@ the point."
 ;; * generate guides
 
 (defun indent-guide--make-overlay (line col)
-  "draw line at (line, col)"
+  "Draw line at (LINE, COL)."
   (let ((original-pos (point))
         diff string ov prop)
     (save-excursion
@@ -189,8 +187,8 @@ the point."
                              (when (eq (overlay-get ov 'category) 'indent-guide)
                                ov))
                            (overlays-in (point) (point))))
-                 ;; we already have an overlay here => append to the existing overlay
-                 ;; (important when "recursive" is enabled)
+                 ;; we already have an overlay here => append to the existing
+                 ;; overlay (important when "recursive" is enabled)
                  (setq string (let ((str (overlay-get ov 'before-string)))
                                 (concat str
                                         (make-string (- diff (length str)) ?\s)
@@ -208,8 +206,8 @@ the point."
                              (when (eq (overlay-get ov 'category) 'indent-guide)
                                ov))
                            (overlays-in (1- (point)) (point))))
-                 ;; we already have an overlay here => modify the existing overlay
-                 ;; (important when "recursive" is enabled)
+                 ;; we already have an overlay here => modify the existing
+                 ;; overlay (important when "recursive" is enabled)
                  (setq string (let ((str (overlay-get ov 'display)))
                                 (aset str (+ 1 tab-width diff) ?|)
                                 str)
@@ -236,6 +234,7 @@ the point."
                      (propertize string 'face 'indent-guide-face))))))
 
 (defun indent-guide-show ()
+  "Show indent guides."
   (interactive)
   (unless (or (indent-guide--active-overlays)
               (active-minibuffer-window))
@@ -269,12 +268,14 @@ the point."
         (remove-overlays (point) (point) 'category 'indent-guide)))))
 
 (defun indent-guide-remove ()
+  "Remove indent guides."
   (dolist (ov (indent-guide--active-overlays))
     (delete-overlay ov)))
 
 ;; * minor-mode
 
 (defun indent-guide-post-command-hook ()
+  "FIXME document this hook."
   (if (null indent-guide-delay)
       (indent-guide-show)
     (when (null indent-guide--timer-object)
@@ -285,11 +286,12 @@ the point."
                                    (setq indent-guide--timer-object nil)))))))
 
 (defun indent-guide-pre-command-hook ()
+  "FIXME document this hook."
   (indent-guide-remove))
 
 ;;;###autoload
 (define-minor-mode indent-guide-mode
-  "show vertical lines to guide indentation"
+  "Show vertical lines to guide indentation."
   :init-value nil
   :lighter " ing"
   :global nil
@@ -307,8 +309,6 @@ the point."
     (unless (cl-some 'derived-mode-p indent-guide-inhibit-modes)
       (indent-guide-mode 1))))
 
-;; * provide
 
 (provide 'indent-guide)
-
 ;;; indent-guide.el ends here

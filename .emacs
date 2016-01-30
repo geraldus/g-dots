@@ -34,10 +34,10 @@
 
 ;; Устанавливаем все нужные пакеты
 (require 'autopack)
-(unless (g/packages-installed-p)
+(unless (g:packages-installed-p)
   (message "%s" "Refreshing packages database…")
   (package-refresh-contents)
-  (dolist (pkg g/packages)
+  (dolist (pkg g:packages)
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
@@ -277,8 +277,8 @@
 ;; ==================================================
 ;; Умная русская раскладка клавиатуры, с учётом ОС Х:
 ;; ==================================================
-(when (string-equal system-type "darwin")
-  (require 'smart-input-methods))
+
+ (require 'smart-input-methods)
 
 
 ;; ===================================
@@ -347,11 +347,16 @@
 (add-hook 'prog-mode-hook #'whitespace-mode)
 
 
+(require 'g-utils)
 ;; Умное перемещение в начало строки:
-(require 'smarter-move-begining-of-line)
-;; Быстро выделить всё до конца строки
-(require 'mark-from-point-to-line-end)
-(global-set-key (kbd "C-S-<return>") 'mark-from-point-to-line-end)
+(global-set-key [remap move-beginning-of-line]
+                #'g:toggle-jump-line-beginning)
+;; быстрое выделение текста до конца строки
+(global-set-key (kbd "C-S-<return>") #'g:mark-from-point-to-line-end)
+;; быстрые вызов/переключение на Eshell
+(global-set-key (kbd "M-+") #'g:jump-to-eshell-buffer)
+;; уменьшение веса полужирных личин
+(setq g:bold-faces-dim t)
 
 
 ;; ==============
@@ -493,7 +498,6 @@
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 
-
 ;; ====
 ;; FCI:
 ;; ====
@@ -567,23 +571,6 @@ Argument IGNORE is not used."
 (require 'indent-guide)
 
 
-;; =======
-;; Eshell:
-;; =======
-
-(defun g:jump-to-eshell-buffer ()
-  "Quickly jump to *eshell* buffer."
-  (interactive)
-  (let ((cur (buffer-name))
-        (esh "*eshell*"))
-    (switch-to-buffer
-     (if (equal cur esh)
-         (other-buffer (current-buffer) 1)
-       (if (get-buffer esh)
-           esh
-         (eshell))))))
-(global-set-key (kbd "M-+") #'g:jump-to-eshell-buffer)
-
 
 ;; ========================
 ;; Плавная прокрутка мышью:
@@ -598,54 +585,8 @@ Argument IGNORE is not used."
 ;; ================================
 (require 'xah-syntax-color-hex)
 (add-hook 'prog-mode 'xah-syntax-color-hex)
-
-
-(defvar g:bold-faces-list nil "A variable to hold a list of bold faces.")
-
-(defvar g:bold-faces-dim nil
-  "A flag indicating should bold faces be lighter.
-Possible values are: either t or nil or explicit symbol that
-should be used as face `:weight'.  nil means that bold faces
-should have default bold weight, t changes bold to regular, if
-explicit symbol is given it will be used as weight for bold
-faces.")
-
-(defun g:bold-faces-collect ()
-  "Find all faces with weight set to 'bold and store them into special variable."
-  (dolist (face (face-list))
-    (when (eq (face-attribute face :weight nil nil) 'bold)
-      (add-to-list 'g:bold-faces-list face))))
-
-(defun g:bold-faces-make-lighter (&optional weight)
-  "Make all bold faces lighter.
-By default it substitutes 'bold weight with 'regualar unless
-given optional argument, in that case sets weight to WEIGHT
-instead."
-    (let ((w (or weight 'regular)))
-      (dolist (face g:bold-faces-list)
-        (set-face-attribute face nil :weight w))))
-
-(defun g:bold-faces-restore ()
-  "Reset bold faces."
-  (dolist (face g:bold-faces-list)
-      (set-face-attribute face nil :weight 'bold)))
-
-(defun g:bold-faces-handle ()
-  "Handle bold faces.
-This function checks the value of `g:bold-faces-dim' and if its
-value other to nil it replaces faces weight according to value.
-Otherwise it restores default bold weight."
-  (g:bold-faces-collect)
-  (if (eq g:bold-faces-dim nil)
-      (g:bold-faces-restore)
-    (let ((w (if (eq g:bold-faces-dim t) nil g:bold-faces-dim)))
-      (g:bold-faces-make-lighter w))))
-
-(setq g:bold-faces-dim t)
-
-;; (add-hook 'after-init-hook #'g:bold-faces-handle)
-;; (add-hook 'after-change-major-mode-hook #'g:bold-faces-handle)
-;; (add-hook 'buffer-list-update-hook #'g:bold-faces-handle)
+;; (require 'xah-syntax-color-hex)
+;; (add-hook 'prog-mode 'xah-syntax-color-hex)
 
 
 ;; Переназначение шрифта для кириллицы

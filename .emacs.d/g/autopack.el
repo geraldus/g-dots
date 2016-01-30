@@ -5,8 +5,9 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'package)
 
-(defvar g/packages
+(defvar g:packages
   '(ace-jump-mode
     aurora-theme
     color-theme-sanityinc-tomorrow
@@ -44,9 +45,9 @@
     zerodark-theme)
   "List of packages to be installed from archives.")
 
-(defun g/packages-installed-p ()
+(defun g:packages-installed-p ()
   "Determine if all packages are installed."
-  (cl-loop for pkg in g/packages
+  (cl-loop for pkg in g:packages
            when (not (package-installed-p pkg)) do (cl-return nil)
            finally (cl-return t)))
 
