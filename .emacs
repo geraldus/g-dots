@@ -363,6 +363,7 @@
 ;; Expand-region:
 ;; ==============
 
+(require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 
@@ -568,8 +569,10 @@ Argument IGNORE is not used."
 ;; =======================================
 ;; Indent-Guide.el --- подсветка отступов.
 ;; =======================================
-(require 'indent-guide)
 
+;; FIXME * install from Git HEAD https://github.com/zk-phi/indent-guide/
+;;       * find something similar to pathogen.
+(require 'indent-guide)
 
 
 ;; ========================
@@ -583,8 +586,6 @@ Argument IGNORE is not used."
 ;; ================================
 ;; Подсветка цветовых кодов от Кса:
 ;; ================================
-(require 'xah-syntax-color-hex)
-(add-hook 'prog-mode 'xah-syntax-color-hex)
 ;; (require 'xah-syntax-color-hex)
 ;; (add-hook 'prog-mode 'xah-syntax-color-hex)
 
