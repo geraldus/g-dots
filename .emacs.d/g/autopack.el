@@ -36,7 +36,6 @@
     smex
     spaceline
     tangotango-theme
-    toxi-theme
     tronesque-theme
     undo-tree
     web-mode
