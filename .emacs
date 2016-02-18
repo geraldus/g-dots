@@ -228,7 +228,7 @@
 (global-hl-line-mode 1)
 (column-number-mode t)
 (show-paren-mode t)
-(add-hook 'prog-mode-hook #'linum-mode)
+;; (add-hook 'prog-mode-hook #'linum-mode)
 
 
 (when (memq window-system '(mac ns))
@@ -544,7 +544,7 @@ Argument IGNORE is not used."
 (add-hook 'web-mode-hook (lambda () (fci-mode -1)))
 (add-hook 'css-mode-hook
           (lambda ()
-            (linum-mode 1)
+            ;; (linum-mode 1)
             (diff-hl-mode 1)))
 
 (require 'php-mode)
