@@ -578,7 +578,7 @@ Argument IGNORE is not used."
 ;; ========================
 ;; Плавная прокрутка мышью:
 ;; ========================
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 5)))
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
 (when (memq window-system '(mac ns))
   (setq mouse-wheel-progressive-speed nil))
 
