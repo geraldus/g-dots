@@ -461,6 +461,8 @@
 (require 'magit)
 (global-set-key (kbd "C-S-g") #'magit-status)
 
+(add-hook 'git-commit-mode-hook #'evil-insert-state)
+
 
 ;; ========
 ;; Org Mode
