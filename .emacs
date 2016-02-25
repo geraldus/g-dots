@@ -271,6 +271,10 @@
 (global-undo-tree-mode)
 
 
+;; =======
+;; Прочее:
+;; =======
+
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 
