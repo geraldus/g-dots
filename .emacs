@@ -199,7 +199,6 @@
  '(smarty-right-delimiter "}>")
  '(smex-history-length 33)
  '(solarized-high-contrast-mode-line t)
- '(tab-stop-list (number-sequence 2 80 2))
  '(tab-width 2)
  '(undo-limit 10485760)
  '(undo-strong-limit 10485760)
