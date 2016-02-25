@@ -256,10 +256,17 @@
 
 (global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
 
+
+(require 'company)
+(require 'haskell)
+(require 'haskell-mode)
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
+(require 'undo-tree)
+
 ;; ==========
 ;; Undo-Tree:
 ;; ==========
-(require 'undo-tree)
 (global-undo-tree-mode)
 
 
@@ -411,11 +418,6 @@
 ;; Haskell:
 ;; ========
 
-(require 'haskell)
-(require 'haskell-mode)
-(require 'haskell-interactive-mode)
-(require 'haskell-process)
-
 (add-hook 'haskell-mode-hook #'turn-on-font-lock)
 (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
 (eval-after-load 'flycheck
@@ -446,7 +448,6 @@
 ;; CompAny:
 ;; ========
 
-(require 'company)
 (add-hook 'after-init-hook #'global-company-mode)
 (global-set-key (kbd "<f8>") #'company-mode)
 
