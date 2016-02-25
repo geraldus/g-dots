@@ -327,7 +327,7 @@
 (add-hook 'after-init-hook
           (lambda ()
             (diminish 'flycheck-mode "⨠")
-            (diminish 'whitespace-mode "⨀")
+            (diminish 'whitespace-mode "¬")
             (diminish 'auto-revert-mode "↻")
             (diminish 'company-mode "⧊")
             (diminish 'undo-tree-mode "⎌")))
