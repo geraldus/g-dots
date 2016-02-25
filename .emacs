@@ -377,12 +377,6 @@
 
 (require 'evil)
 (evil-mode 1)
-(require 'powerline)
-(require 'powerline-evil)
-(require 'spaceline-config)
-(spaceline-spacemacs-theme)
-(setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state)
-
 
 (define-key evil-motion-state-map (kbd "<tab>") #'indent-for-tab-command)
 (define-key evil-normal-state-map (kbd "<tab>") #'indent-for-tab-command)
@@ -395,6 +389,10 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+(require 'powerline)
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+(setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state)
 
 ;; ==============
 ;; Ace-Jump mode:
@@ -451,7 +449,6 @@
 (require 'company)
 (add-hook 'after-init-hook #'global-company-mode)
 (global-set-key (kbd "<f8>") #'company-mode)
-
 
 
 ;; ====================
