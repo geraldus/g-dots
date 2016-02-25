@@ -271,8 +271,6 @@
 (global-undo-tree-mode)
 
 
-(electric-indent-mode 1)
-(electric-pair-mode 1)
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 
