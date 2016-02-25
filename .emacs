@@ -263,9 +263,11 @@
 (require 'haskell-process)
 (require 'undo-tree)
 
+
 ;; ==========
 ;; Undo-Tree:
 ;; ==========
+
 (global-undo-tree-mode)
 
 
